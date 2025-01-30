@@ -1,0 +1,83 @@
+body {
+    margin: 0;
+    background-color: rgb(225, 231, 221);
+}
+
+p {
+    margin: 0;
+}
+
+ul {
+    padding: 0;
+}
+.container {
+    padding: 25px 200px;
+}
+.title {
+    font-size: 64px;
+    font-weight: 900;
+}
+
+.header {
+    background-color: blanchedalmond;
+}
+
+.del-btn {
+    cursor: pointer;
+}
+
+.del-img {
+    width: 20px;
+    height: 20px;
+    margin-right: 10px; 
+    cursor: pointer;
+}
+.todo-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 10px;
+    max-height: 20px;
+    border:1px solid black;
+    border-top:none;
+}
+.todo-item:first-child {
+    margin-top: 20px;
+    border-top: 1px solid black;
+}
+.left-part {
+    display: flex; 
+    gap: 20px;
+    align-items: center;
+}
+
+.completed {
+    text-decoration: line-through;
+}
+
+.add-task-section {
+    display: flex;
+    gap: 20px;
+}
+#todo-input{
+    outline: none;
+    border-radius: 12px;
+    padding: 10px 20px;
+    border: 0;
+    width: 100%;
+}
+
+#add-button {
+    padding: 10px 20px;
+    border: 0;
+    border-radius: 12px;
+    cursor: pointer;
+    background-color: rgb(14, 105, 154);
+    color:white;
+    font-weight: 800;
+}
+
+#add-button:hover {
+    background-color: #012f49;
+    scale: 1.1;
+}
