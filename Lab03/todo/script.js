@@ -1,10 +1,23 @@
 "use strict";
 
 const todoList = document.getElementById("todo-list"),
+    doneList = document.getElementById("done-list"),
   addButton = document.getElementById("add-button"),
-  inputField = document.getElementById("todo-input");
+  inputField = document.getElementById("todo-input"),
+  todoCount = document.querySelector('#todo-count'),
+doneCount = document.querySelector('#done-count'),
+    resetBtn = document.querySelector('#reset-btn')
 
 const todosArr = [];
+
+let done = [];
+
+
+resetBtn.addEventListener('click', () => {
+  done = []
+  render()
+  resetBtn.classList.add('hidden')
+})
 
 function addTodo() {
   const todo = document.createElement("li");
@@ -22,6 +35,23 @@ function addTodo() {
     check.addEventListener("change", function () {
       if (this.checked) {
         todoContent.classList.add("completed");
+        const index = todosArr.indexOf(todo);
+
+        const text = todosArr[index].textContent
+
+        const doneItem = document.createElement("div")
+        doneItem.textContent = text
+        doneItem.classList.add("done-item")
+        if(done.length ===-1) {
+          resetBtn.classList.add('hidden')
+        } else {
+          resetBtn.classList.remove('hidden')
+        }
+
+        done.push(doneItem)
+
+        todosArr.splice(index, 1);
+        render()
       } else {
         todoContent.classList.remove("completed");
       }
@@ -33,7 +63,6 @@ function addTodo() {
     todo.appendChild(leftPart);
     todosArr.unshift(todo);
     inputField.value = "";
-    console.log(todosArr);
   }
 
   const del = document.createElement("div");
@@ -58,6 +87,14 @@ function render() {
   todosArr.forEach((todo) => {
     todoList.appendChild(todo);
   });
+  todoCount.textContent = todosArr.length + ''
+
+  doneList.innerHTML = "";
+  done.forEach((done) => {
+    doneList.appendChild(done);
+  })
+
+  doneCount.textContent = done.length + ''
 }
 addButton.addEventListener("click", () => {
   addTodo();
