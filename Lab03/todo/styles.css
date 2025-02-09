@@ -136,3 +136,9 @@ ul {
     margin-top: 16px;
     color: #78CFB0;
 }
+
+@media (max-width: 745px) {
+    .container {
+        padding: 25px 10px;
+    }
+}
