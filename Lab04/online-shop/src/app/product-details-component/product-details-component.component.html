@@ -1,0 +1,52 @@
+<div class="p-16">
+  @if (product) {
+    <div class="bg-white flex rounded-2xl">
+      <div class="w-1/2 p-16">
+        <img [src]="product.image" alt="" class="w-full h-full object-contain rounded-2xl">
+      </div>
+      <div class="w-1/2 p-16 flex flex-col gap-8">
+        <p class="text-[32px] font-semibold text-[#2F294D]"> {{ product.name }} </p>
+        <p class="text-[16px] font-semibold text-[#2F294D]">
+          {{ product.description }}
+        </p>
+        <div class="flex">
+
+
+          <div *ngFor="let i of [1, 2, 3, 4, 5]; let index = index">
+            @if (i <= product.rating) {
+              <img src="/assets/svg/star.svg" alt="star">
+            } @else {
+              <img src="/assets/svg/startUnfilled.svg" alt="startUnfilled">
+            }
+          </div>
+
+
+          <p class="ml-4">
+            {{ product.rating }}
+          </p>
+        </div>
+        <p class="text-[44px] font-semibold text-[#2F294D]">${{ product.price }}</p>
+
+        <div class="flex gap-4 items-center">
+          <button>Add to cart</button>
+          <button>Buy now</button>
+          <button (click)="openShareOptions()">Share</button>
+        </div>
+
+
+        <div *ngIf="isShareModalOpen" class="fixed inset-0 bg-gray-500 bg-opacity-50 flex justify-center items-center">
+          <div class="bg-white p-8 rounded-xl shadow-lg">
+            <h2 class="text-xl font-semibold mb-4">Share this product</h2>
+            <button (click)="shareToTelegram()"
+                    class="block w-full text-center py-2 bg-blue-500 text-white rounded-lg mb-2">Share in Telegram
+            </button>
+            <button (click)="shareToWhatsApp()"
+                    class="block w-full text-center py-2 bg-green-500 text-white rounded-lg">Share in WhatsApp
+            </button>
+            <button (click)="closeShareOptions()" class="mt-4 text-red-500">Cancel</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  }
+</div>
