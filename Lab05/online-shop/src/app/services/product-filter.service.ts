@@ -1,0 +1,35 @@
+import { Injectable } from '@angular/core';
+import { BehaviorSubject } from 'rxjs';
+import { Product } from '../../../types';
+import { products } from '../../../data/constants';
+
+@Injectable({
+  providedIn: 'root',
+})
+export class ProductFilterService {
+  private allProductsSubject = new BehaviorSubject<Product[]>([...products]);
+  filteredProductsSubject = new BehaviorSubject<Product[]>([...products]);
+
+  allProducts$ = this.allProductsSubject.asObservable();
+  filteredProducts$ = this.filteredProductsSubject.asObservable();
+
+  setFilteredProducts(filteredProducts: Product[]) {
+    this.filteredProductsSubject.next(
+      filteredProducts.length
+        ? filteredProducts
+        : this.allProductsSubject.getValue(),
+    );
+  }
+
+  deleteProductById(productId: number) {
+    const updatedProducts = this.allProductsSubject
+      .getValue()
+      .filter((product) => product.id !== productId);
+    this.allProductsSubject.next(updatedProducts);
+
+    const updatedFilteredProducts = this.filteredProductsSubject
+      .getValue()
+      .filter((product) => product.id !== productId);
+    this.filteredProductsSubject.next(updatedFilteredProducts);
+  }
+}

@@ -1,0 +1,20 @@
+<div class="md:p-16 sm:p-8 p-4 select-none bg-white flex gap-4">
+  <div (click)="selectFilter('')"
+       class="flex items-center gap-4 px-[24px] py-[16px]  rounded-2xl border-[#E1E3E5] border-[1px] w-fit cursor-pointer">
+    <img src="/assets/svg/menu.svg" alt="menu">
+    <p>All Categories</p>
+  </div>
+  <div class="flex gap-2">
+    @for (filter of filterList; track filter.category) {
+      <button (click)="selectFilter(filter.category)"
+              class="flex items-center gap-4 px-[24px] py-[16px]
+        rounded-2xl border-[#E1E3E5] border-[1px]
+        w-fit cursor-pointer hover:bg-blue-200">
+
+        <p>{{ filter.category.toUpperCase() }}</p>
+
+      </button>
+    }
+  </div>
+</div>
+
