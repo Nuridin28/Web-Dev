@@ -1,10 +1,10 @@
-<div class="md:p-16 sm:p-8 p-4 select-none bg-white flex gap-4">
+<div class="md:p-16 sm:p-8 p-4 select-none bg-white flex gap-4 flex-col md:flex-row items-center md:items-start">
   <div (click)="selectFilter('')"
-       class="flex items-center gap-4 px-[24px] py-[16px]  rounded-2xl border-[#E1E3E5] border-[1px] w-fit cursor-pointer">
+       class="flex  items-center gap-4 px-[24px] py-[16px]  rounded-2xl border-[#E1E3E5] border-[1px] w-fit cursor-pointer">
     <img src="/assets/svg/menu.svg" alt="menu">
     <p>All Categories</p>
   </div>
-  <div class="flex gap-2">
+  <div class="flex flex-col md:flex-row gap-2 justify-center items-center md:items-start">
     @for (filter of filterList; track filter.category) {
       <button (click)="selectFilter(filter.category)"
               class="flex items-center gap-4 px-[24px] py-[16px]
