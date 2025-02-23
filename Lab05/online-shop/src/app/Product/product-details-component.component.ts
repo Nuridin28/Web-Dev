@@ -4,7 +4,7 @@ import { products } from '../../../data/constants';
 import { Product } from '../../../types';
 import { NgForOf, NgIf } from '@angular/common';
 import { ProductFilterService } from '../services/product-filter.service';
-import { Observable, take } from 'rxjs';
+import { LikedProductsService } from '../services/liked-products.service';
 
 @Component({
   selector: 'app-product-details',
@@ -16,6 +16,7 @@ export class ProductDetailsComponent implements OnInit {
   productId: number | null = null;
   product: Product | undefined;
   isShareModalOpen = false;
+  likedProductService = inject(LikedProductsService);
 
   constructor(
     private route: ActivatedRoute,
@@ -74,6 +75,12 @@ export class ProductDetailsComponent implements OnInit {
     if (!this.product?.isLiked && this.product) {
       this.product.isLiked = true;
       this.product.likes++;
+    } else {
+      if (this.product) {
+        this.product.isLiked = false;
+        this.product.likes--;
+      }
     }
+    this.likedProductService.filterLikedProducts();
   }
 }
