@@ -1,0 +1,31 @@
+<header class="flex justify-between items-center px-16 py-4 bg-[#7C4EE4] text-white shadow-md">
+  <div class="text-3xl font-bold tracking-wide">
+    ABOUT
+  </div>
+  <button
+    (click)="goToHome()"
+    class="bg-white text-[#7C4EE4] px-6 py-2 rounded-lg hover:bg-[#7C4EE4] hover:text-white border border-[#7C4EE4] transition duration-300"
+  >
+    Back
+  </button>
+</header>
+
+<section class="flex flex-col lg:flex-row items-center justify-between px-16 py-10 bg-white">
+  <div class="w-1/3">
+    <img
+      alt="About Image"
+      class="rounded-lg shadow-lg hover:scale-105 transition-transform duration-300"
+      src="imgs/img-about.jpg"
+    />
+  </div>
+
+  <div class="lg:w-1/2 text-center lg:text-left">
+    <p class="text-3xl font-extrabold text-[#7C4EE4] mb-6">
+      This is lab6 about page!
+    </p>
+    <p class="text-lg text-gray-700 leading-relaxed">
+      Welcome to my project! Explore the beauty of Angular with Tailwind CSS. This page is styled with custom colors
+      and smooth animations.
+    </p>
+  </div>
+</section>

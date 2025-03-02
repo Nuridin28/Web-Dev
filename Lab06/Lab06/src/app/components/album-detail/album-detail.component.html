@@ -1,0 +1,28 @@
+<div class="text-center">
+  <button
+    (click)="goBack()"
+    class="mt-4 bg-[#7C4EE4] cursor-pointer   text-white px-4 py-2 rounded-lg shadow-lg  transition"
+  >
+    BACK
+  </button>
+  <div class="text-[48px] font-bold">
+    {{ album?.title }}
+  </div>
+  <input *ngIf="album" [(ngModel)]="updatedTitle"
+         class="border p-2 mt-4 w-full max-w-xs"
+         placeholder="Change title"
+         type="text"
+  />
+  <button
+    (click)="handlePhotosClick()"
+    class="bg-blue-500 text-white p-2 mt-4 rounded-lg">
+    Photos
+  </button>
+  <button
+    (click)="saveChanges()"
+    *ngIf="album"
+    class="bg-green-500 text-white p-2 mt-4 rounded-lg ml-2">
+    Save
+  </button>
+</div>
+
