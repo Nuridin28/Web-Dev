@@ -23,15 +23,12 @@ export class AlbumDetailComponent implements OnInit {
   ngOnInit(): void {
     this.albumId = Number(this.route.snapshot.paramMap.get('id'));
     if (this.albumId) {
-      this.albumService.getAlbums().subscribe({
-        next: data => {
-          this.album = data.find((album: IAlbum) => album.id === this.albumId);
+      this.albumService.getAlbumsArray().find((album: IAlbum) => {
+        if (album.id === this.albumId) {
+          this.album = album;
           if (this.album) {
             this.updatedTitle = this.album.title;
           }
-        },
-        error: err => {
-          console.error('Ошибка при получении альбома', err);
         }
       });
     }
@@ -44,7 +41,7 @@ export class AlbumDetailComponent implements OnInit {
   saveChanges(): void {
     if (this.album) {
       this.album.title = this.updatedTitle;
-      console.log('Изменения сохранены:', this.album);
+      console.log('Changes Saved', this.album);
     }
   }
 

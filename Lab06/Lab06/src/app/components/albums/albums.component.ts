@@ -18,19 +18,24 @@ export class AlbumsComponent implements OnInit {
   private router = inject(Router);
 
   ngOnInit(): void {
-    this.apiService.getAlbums().subscribe(
-      (data: IAlbum[]) => {
-        this.albums = data;
-        this.visibleAlbums = this.albums.slice(0, this.itemsToShow);
-      },
-      error => {
-        console.error('Error fetching data', error);
-      }
-    );
+    this.albums = this.apiService.getAlbumsArray();
+    this.visibleAlbums = this.albums.slice(0, this.itemsToShow);
+
+    if (!this.albums.length) {
+      this.apiService.getAlbums().subscribe(
+        (data: IAlbum[]) => {
+          this.albums = data;
+          this.visibleAlbums = this.albums.slice(0, this.itemsToShow);
+        },
+        error => {
+          console.error('Error fetching data', error);
+        }
+      );
+    }
   }
 
   openAlbumDetails(id: number): void {
-    this.router.navigate([`/albums/${id}`]);
+    this.router.navigate([`/albums/${id}`]).then(() => console.log('Album details opened'));
   }
 
   loadMore(): void {
@@ -44,6 +49,6 @@ export class AlbumsComponent implements OnInit {
   }
 
   goToHome(): void {
-    this.router.navigate(['/home']);
+    this.router.navigate(['/home']).then(() => console.log('Home page opened'));
   }
 }

@@ -5,10 +5,17 @@ export interface IAlbum {
 }
 
 export interface IPhoto {
-  albumId: number;
   id: number;
-  title: string;
   url: string;
-  thumbnailUrl: string;
+  photographer: string;
+  src: {
+    original: string;
+    large2x: string;
+    large: string;
+    medium: string;
+    small: string;
+    portrait: string;
+    landscape: string;
+  };
+  alt: string;
 }
-

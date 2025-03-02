@@ -1,3 +1,4 @@
+// album-photos.component.ts
 import { Component, inject, OnDestroy, OnInit } from '@angular/core';
 import { IAlbum, IPhoto } from '../../types';
 import { AlbumsService } from '../../services/albums.service';
@@ -32,7 +33,7 @@ export class AlbumPhotosComponent implements OnInit, OnDestroy {
           this.album = data.find((album: IAlbum) => album.id === this.albumId);
         },
         error: err => {
-          console.error('error: ', err);
+          console.error('Ошибка при получении альбома', err);
         }
       });
     }
