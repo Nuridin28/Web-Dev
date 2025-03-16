@@ -43,7 +43,7 @@
   <div class="lg:w-1/2 mt-10 lg:mt-0 f">
     <img
       alt="img"
-      class="rounded-lg shadow-lg hover:scale-105 transition-transform duration-300"
+      class="rounded-lg shadow-lg hover:scale-105 transition-transform duration-300 w-full"
       src="https://akm-img-a-in.tosshub.com/indiatoday/images/story/202410/one-piece-will-return-in-april-2025-with-a-new-arc-153338935-16x9_0.jpg?VersionId=JRxFeDY5kyREyeucuxMJkiow88fm8bhj&size=690:388"
     />
   </div>
