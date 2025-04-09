@@ -1,0 +1,19 @@
+
+div {
+    margin-bottom: 20px;
+}
+
+h3 {
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: #007BFF; 
+    transition: color 0.3s ease-in-out;
+}
+
+h3:hover {
+    color: #0056b3; 
+}
+
+h3:active {
+    color: #004085;
+}

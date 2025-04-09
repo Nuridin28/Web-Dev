@@ -1,0 +1,12 @@
+<div *ngIf="vacancies.length > 0; else noVacancies">
+    <h4>Vacancies:</h4>
+    <ul>
+        <li *ngFor="let v of vacancies">
+            {{ v.name }} – ${{ v.salary }}
+        </li>
+    </ul>
+</div>
+
+<ng-template #noVacancies>
+    <p>No vacancies available.</p>
+</ng-template>

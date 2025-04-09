@@ -1,0 +1,8 @@
+<div *ngFor="let company of companies">
+    <h3 (click)="getVacancies(company.id)">
+        {{ company.name }}
+    </h3>
+</div>
+
+<app-vacancy-list *ngIf="selectedCompanyId" [companyId]="selectedCompanyId">
+</app-vacancy-list>
